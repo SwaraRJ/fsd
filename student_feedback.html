@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        input, select {
+            padding: 5px;
+            margin: 5px 0;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Student Feedback Form</h2>
+
+<form onsubmit="return validateForm()">
+    <label>Name:</label><br>
+    <input type="text" id="name" placeholder="Enter your name"><br>
+
+    <label>Email ID:</label><br>
+    <input type="text" id="email" placeholder="Enter your email"><br>
+
+    <label>Mobile No.:</label><br>
+    <input type="text" id="mobile" placeholder="10-digit number"><br>
+
+    <label>Feedback:</label><br>
+    <select id="feedback">
+        <option value="">--Select--</option>
+        <option value="Not good">Not good</option>
+        <option value="Good">Good</option>
+        <option value="Very good">Very good</option>
+        <option value="Excellent">Excellent</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function validateForm() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const feedback = document.getElementById('feedback').value;
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+    const mobileRegex = /^[0-9]{10}$/;
+
+    if (!nameRegex.test(name)) {
+        alert("Please enter a valid name (letters only).");
+        return false;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+    }
+
+    if (!mobileRegex.test(mobile)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return false;
+    }
+
+    if (feedback === "") {
+        alert("Please select your feedback.");
+        return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+< html> 
+<html ng-app="locationApp"> 
+<head> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script> 
+</head> 
+<body ng-controller="locationCtrl"> 
+<h2>Current Location:</h2> 
+<p>{{ currentLocation }}</p> 
+<script> 
+var app = angular.module('locationApp', []); 
+app.controller('locationCtrl', function ($scope, 
+$location) { 
+// Get and display the current location 
+$scope.currentLocation = $location.absUrl(); 
+}); 
+</script> 
+</body> 
+</html>

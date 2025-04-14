@@ -1,0 +1,57 @@
+<html lang="en" ng-app="studentApp"> 
+<head> 
+<meta charset="UTF-8"> 
+ <title>Student Details</title> 
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+ <style> 
+     body { 
+      margin: 2%; 
+      font-size: 100%; 
+     } 
+ 
+     th, 
+     td { 
+      padding: 10px; 
+     } 
+    </style> 
+</head> 
+<body> 
+ 
+<div ng-controller="StudentController as ctrl"> 
+ <table> 
+     <table border=1> 
+         <tr> 
+             <th>ID</th> 
+             <th>Name</th> 
+<th>class</th> 
+</tr> 
+</thead> 
+<tbody> 
+<tr ng-repeat="student in ctrl.students"> 
+<td>{{ student.id }}</td> 
+<td>{{ student.name }}</td> 
+<td>{{ student.class }}</td> 
+</tr> 
+</tbody> 
+</table> 
+</div> 
+<script> 
+angular.module('studentApp', []) 
+.controller('StudentController', function() { 
+var ctrl = this; 
+ctrl.students = [ 
+{ id: 1, name: 'payal', class: 'FY' }, 
+{ id: 2, name: 'ROHIT', class: 'SY' }, 
+{ id: 3, name: 'RONIT', class: 'TY' }, 
+{ id: 4, name: 'RAHUL', class: 'MCS' }, 
+{ id: 5, name: 'RONIT', class: 'FY' }, 
+{ id: 6, name: 'KARAN', class: 'SY' }, 
+{ id: 7, name: 'VIRAT', class: 'SY' }, 
+{ id: 8, name: 'RAHUL', class: 'FY' }, 
+{ id: 9, name: 'SUMIT', class: 'MCS' }, 
+{ id: 10, name: 'SUMEDH', class: 'TY' } 
+]; 
+}); 
+</script> 
+</body> 
+</html>

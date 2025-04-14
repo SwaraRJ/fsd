@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username and Password Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+
+    <h2>Username and Password Validation</h2>
+
+    <!-- Form to Enter Username and Password -->
+    <form name="validationForm" ng-submit="submitForm()">
+        <label for="username">Username:</label>
+        <input type="text" id="username" ng-model="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" ng-model="password" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- AngularJS Validation Alerts -->
+    <div ng-if="errorMessage" style="color: red;">
+        <p>{{ errorMessage }}</p>
+    </div>
+    <div ng-if="validMessage" style="color: green;">
+        <p>{{ validMessage }}</p>
+    </div>
+
+    <script>
+        // AngularJS Module and Controller
+        var app = angular.module('myApp', []);
+
+        app.controller('myCtrl', function($scope) {
+            // Function to submit the form
+            $scope.submitForm = function() {
+                // Reset messages
+                $scope.errorMessage = "";
+                $scope.validMessage = "";
+
+                // Validate Username
+                if (!$scope.username) {
+                    $scope.errorMessage = "Enter username";
+                    return;
+                } else if ($scope.username.length < 3) {
+                    $scope.errorMessage = "Username is too short";
+                    return;
+                }
+
+                // Validate Password
+                if (!$scope.password) {
+                    $scope.errorMessage = "Enter password";
+                    return;
+                } else if ($scope.password.length < 8) {
+                    $scope.errorMessage = "Password must be at least 8 characters";
+                    return;
+                }
+
+                // If both username and password are valid
+                $scope.validMessage = "Valid username and password";
+            };
+        });
+    </script>
+</body>
+</html>
